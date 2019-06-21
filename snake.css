@@ -1,8 +1,8 @@
 body{
+    position:fixed;
     text-align: center;
     background-color: black;
 }
 h1{
-    font-size: 50px;
     color: white;
 }
