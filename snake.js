@@ -6,7 +6,19 @@ function setup(){
 
     createCanvas(500,500)
     background(120)
-
+    noStroke()
+    var options = {
+        preventDefault: true
+      };
+    
+      // document.body registers gestures anywhere on the page
+      var hammer = new Hammer(document.body, options);
+      hammer.get('swipe').set({
+        direction: Hammer.DIRECTION_ALL
+      });
+    
+      hammer.on("swipe", swiped);
+    
 
     keypressed = false;
     snakeX = 240;
@@ -181,4 +193,36 @@ function keyPressed(){
     }
     keypressed = true
 
+}
+function swiped(event){
+    if(event.direction == 4){
+        if(velX === 0){
+            velX = 1
+            velY = 0 
+            started = true
+        }
+
+    }
+    if(event.direction == 8){
+        if(velY === 0){
+            velX = 0
+            velY = -1  
+            started = true
+        }
+    }
+    if(event.direction == 16){
+        if(velY === 0){
+            velX = 0
+            velY = 1
+
+        }
+        started = true
+    }
+    if(event.direction == 2){
+        if(velX === 0){
+            velX = -1
+            velY = 0
+            started = true
+        }
+    }
 }
